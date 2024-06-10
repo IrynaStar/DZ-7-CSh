@@ -1,0 +1,180 @@
+
+struct Check
+{
+    private string shopName;
+    private string address;
+    private string country;
+    private string name;
+    private string phoneNumber;
+    private string item;
+    private short price;
+    private short quantity;
+
+
+    public Check() : this("ЮнионСити", "Косая алея 12")
+    {
+        Console.WriteLine("Конструктор без параметров для магазина!");
+    }
+
+    public Check(string shopName, string address) : this(shopName, address, "Ukraine")
+    {
+        Console.WriteLine("Конструктор с одним параметром для магазина!");
+    }
+
+    public Check(string shopName, string address, string country)
+    {
+        SetShopName(shopName);
+        SetAddress(address);
+        SetCountry(country);
+        Console.WriteLine("Основной конструктор для магазина!");
+    }
+
+    //Геттеры и Сеттеры для магазина
+    public void SetShopName(string shopName)
+    {
+        this.shopName = shopName;
+    }
+
+    public string GetshopName()
+    {
+        return shopName;
+    }
+
+    public void SetAddress(string address)
+    {
+        this.address = address;
+    }
+
+    public string GetAddress()
+    {
+        return address;
+    }
+
+    public void SetCountry(string country)
+    {
+        this.country = country;
+    }
+
+    public string GetCountry()
+    {
+        return country;
+    }
+
+    //Конструктор для клиента
+    public Check(string name, string phoneNumber, string lastName, DateTime dateOfBirth)
+    {
+        SetName(name);
+        SetPhoneNumber(phoneNumber);
+        Console.WriteLine("Основной конструктор для клиента!");
+    }
+
+    //Геттеры и Сеттеры для клиента
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public void SetPhoneNumber(string phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public string GetPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    //Конструктор для продукта
+    public Check(string item, short price, short quantity)
+    {
+        SetItem(item);
+        SetPrice(price);
+        SetQuantity(quantity);
+        Console.WriteLine("Основной конструктор!");
+    }
+
+    //Геттеры и Сеттеры для продукта
+    public void SetItem(string item)
+    {
+        this.item = item;
+    }
+
+    public string GetItem()
+    {
+        return item;
+    }
+
+    public void SetPrice(short price)
+    {
+        this.price = price;
+    }
+
+    public short GetPrice()
+    {
+        return price;
+    }
+
+    public void SetQuantity(short quantity)
+    {
+        this.quantity = quantity;
+    }
+
+    public short GetQuantity()
+    {
+        return quantity;
+    }
+
+    //Вывод для магазина
+    public void DisplayShopInfo()
+    {
+        Console.WriteLine("\t\t" + shopName);
+        Console.WriteLine(address + "\n");
+        Console.WriteLine(country + "\n");
+    }
+
+    //вывод для клиента
+    public void DisplayClientInfo()
+    {
+        Console.WriteLine(name + "\t\t " + phoneNumber + "\n");
+    }
+
+    //вывод для продукта
+    public void DisplayProductInfo()
+    {
+        Console.WriteLine(item + "\n");
+        Console.WriteLine(quantity + "\t\t\t" + price + "$\n\n\n");
+    }
+
+    public short GetTotalPrice()
+    {
+        return (short)(price * quantity);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Check s = new Check("'Albatros'", "Odesa, Henyezska str., 28");
+        s.DisplayShopInfo();
+
+        DateTime currentDate = DateTime.Now;
+        Console.WriteLine(currentDate.ToString("dd.MM.yyyy"));
+
+        DateTime currentTime = DateTime.Now;
+        Console.WriteLine(currentTime.ToString("HH:mm"));
+
+        Check c = new Check("Anton", "380936245127");
+        c.DisplayClientInfo();
+
+        Check p = new Check("10.9 - inch iPad Wi‑Fi + Cellular 256GB - Blue", 749, 1);
+        p.DisplayProductInfo();
+
+        Console.WriteLine("Total\t\t\t" + p.GetTotalPrice());
+    }
+}
